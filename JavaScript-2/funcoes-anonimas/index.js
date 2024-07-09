@@ -26,3 +26,4 @@ const oiMundo = function (){
 }
 
 oiMundo()
+oiMundo()
