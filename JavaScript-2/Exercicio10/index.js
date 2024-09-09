@@ -1,7 +1,7 @@
 let escolha = "1"
-let vagas = {
-    candidato: []
-}
+let vagas = []
+   
+
 do {
     escolha = mostrarMenu()
     switch (escolha) {
@@ -28,6 +28,8 @@ do {
                 vaga.nome=prompt("Nome da vaga: ")
                 vaga.descricao=prompt("Descrição da Vaga: ")
                 vaga.dataLimite=prompt("Data Limite: ")
+                vaga.candidatos =[]
+                vaga.qtdCandidato = 0
 
                 const confirmacao = confirm(
                     "Salvar esta vaga?\n"+
@@ -42,29 +44,39 @@ do {
                 alert("Vaga salva com sucesso")
             break;
             case "3":
-                alert("Opção para visualizar uma vaga escolhida!")
-                let j = parseFloat(prompt("Qual o indice da vaga?"))
-                alert(
-                            "Vaga" +(j+1)+
-                            "\nNome: " + vagas[j].nome +
-                            "\nDescrição: " + vagas[j].descricao +
-                            "\nData Limite: " + vagas[j].dataLimite +
-                            "\nQuantidade de Candidatos: " + vagas[j].qtdCandidato +
-                            "\nNomes Candidatos: " + vagas[j].candidatos)
-            break;
+                alert("Opção para visualizar uma vaga escolhida!");
+                let j = parseFloat(prompt("Qual o índice da vaga?"));
+                if (j >= 0 && j < vagas.length) {
+                    alert(
+                        "Vaga " + (j + 1) +
+                        "\nNome: " + vagas[j].nome +
+                        "\nDescrição: " + vagas[j].descricao +
+                        "\nData Limite: " + vagas[j].dataLimite +
+                        "\nQuantidade de Candidatos: " + vagas[j].qtdCandidato +
+                        "\nNomes Candidatos: " + vagas[j].candidatos.join(", ")
+                    );
+                } else {
+                    alert("Índice inválido. Tente novamente!");
+                }
+                break;
 
             case "4":
                 alert("Opção para inscrever um candidato em uma  vaga escolhida!")
                 const candidato = prompt("Qual o nome do candidato?")
                 let k = parseFloat(prompt("Qual o indice da vaga?"))
+                if(k >= 0 && k < vagas.length){
                 alert(
                     "Vaga" +(k+1)+
                     "\nNome: " + vagas[k].nome +
                     "\nDescrição: " + vagas[k].descricao +
                     "\nData Limite: " + vagas[k].dataLimite)
+
                 vagas[k].candidatos.push(candidato)
                 vagas[k].qtdCandidato++
                 alert("Candidato inscrito com sucesso!")
+                }else {
+                    alert("Indice inválido. Tente novamente!")    
+                }
             break;
 
             case "5":
