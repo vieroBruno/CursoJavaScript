@@ -25,6 +25,7 @@ function removerJogador(){
     const confirmation = confirm("Remover o jogador " + jogadorRemover.innerText + "?")
     if (confirmation){
         document.getElementById("time").removeChild(jogadorRemover)
+        //ou jogadorRemover.remove()
         document.getElementById("numeroRemover").value=""
     }
 }
